@@ -1,0 +1,41 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<div class="raw">
+    <div class="col-md-6">
+        <div class="media" *ngFor="let pro of products">
+            <div class="media-left">
+                <img class="media-object" width="200" height="200" src="{{pro.imageUrl}}">
+            </div>
+            <div class="media-body">
+                <h4 class="media-heading">
+                    {{ pro.name }}
+                </h4>
+                {{ pro.manufacturer }}
+                <br><b>Price:</b> {{ pro.price }} $ <br><b>Year of Product:</b> {{ pro.year }} <br><b>Qunatity:  </b>{{pro.qty}}<br> to Add Item With Qunatity:<input #Quntity type="text" maxlength="2" (focus)="Quntity.value='' " />
+                <button class="btn btn-primary" (click)="addNewProduct(pro, Quntity.value)"> ADD Item to Cart </button>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div>
+            <div>
+                <table class="table">
+                    <th> Name </th>
+                    <th>Pricce</th>
+                    <th>Quntity</th>
+                    <th>Remove Product</th>
+                    <th>Update your Cart</th>
+                    <tr *ngFor="let pro of products">
+                        <td *ngIf="pro.getAdded()==true"> {{pro.name}}</td>
+                        <td *ngIf="pro.getAdded()==true">{{pro.price}}</td>
+                        <td *ngIf="pro.getAdded()==true">{{pro.addedQty}}</td>
+                        <td *ngIf="pro.getAdded()==true"><button (click)="removeProduct(pro)">Remove Product</button></td>
+                        <td *ngIf="pro.getAdded()==true"><button (click)="Incr(pro)">Add more</button> <button (click)="Decr(pro)">remove one</button></td>
+                    </tr>
+                </table>
+                <div>
+                    Total Amount: <input type="text" #total value="{{CalculateBill()}}" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

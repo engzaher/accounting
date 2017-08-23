@@ -1,0 +1,15 @@
+h4 {
+    color: blue;
+    font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
+    size: 25;
+}
+
+b {
+    color: darkblue;
+    size: 15;
+}
+
+.media-body {
+    border-color: blueviolet;
+    border-style: dashed;
+}
